@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 const images = [
-  "/src/assets/images/festa1.png",
-  "/src/assets/images/festa2.png",
-  "/src/assets/images/festa3.png",
-  "/src/assets/images/festa4.png",
-  "/src/assets/images/festa5.png",
-  "/src/assets/images/festa6.png",
+  "/images/festa1.png",
+  "/images/festa2.png",
+  "/images/festa3.png",
+  "/images/festa4.png",
+  "/images/festa5.png",
+  "/images/festa6.png",
 ];
 
 export function HeroCarousel() {
