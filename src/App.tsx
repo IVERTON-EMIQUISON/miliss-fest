@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {PartyPopper, Sparkles, Calendar, Users, Heart, Gift, Phone, Mail, Instagram, Facebook, Menu, X} from 'lucide-react';
+import { HeroCarousel } from "./HeroCarousel";
+
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -99,7 +101,7 @@ function App() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
               <PartyPopper className="w-8 h-8 text-[#FF1B8D]" />
-              <span className="text-2xl font-bold text-[#1a1a2e]">Party Dreams</span>
+              <span className="text-2xl font-bold text-[#1a1a2e]">Miliss Fest</span>
             </div>
             
             {/* Desktop Menu */}
@@ -177,11 +179,7 @@ function App() {
                 </div>
               </div>
               <div className="relative">
-                <img 
-                  src="https://static.lumi.new/d8/d8908c9af2e703a24b84a598167642a9.png" 
-                  alt="Festa elegante" 
-                  className="rounded-3xl shadow-2xl w-full h-auto"
-                />
+                <HeroCarousel />
                 <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl hidden md:block">
                   <Sparkles className="w-8 h-8 text-[#FFB800] mb-2" />
                   <div className="font-bold text-[#1a1a2e]">Decorações Exclusivas</div>
