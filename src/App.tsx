@@ -1,45 +1,80 @@
 import React, { useState } from "react";
-import {PartyPopper, Sparkles, Calendar, Users, Heart, Gift, Phone, Mail, Instagram, Facebook, Menu, X} from 'lucide-react';
-import { HeroCarousel } from "./HeroCarousel";
-
+import {PartyPopper, Sparkles, Calendar, Users, Heart, Gift, Phone, Mail, Instagram, Facebook, Menu, X, Package, Boxes, Crown, Baby} from 'lucide-react';
+import { HeroCarousel } from "./components/HeroCarousel";
+import { WhatsAppFloating } from "./components/WhatsAppFloating";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", eventType: "", message: "" });
 
-  const partyTypes = [
-    {
-      icon: Gift,
-      title: "Aniversários",
-      description: "Festas infantis e adultos com decorações personalizadas e temáticas únicas"
-    },
-    {
-      icon: Heart,
-      title: "Casamentos",
-      description: "Celebrações elegantes e românticas para o dia mais especial da sua vida"
-    },
-    {
-      icon: Users,
-      title: "Eventos Corporativos",
-      description: "Confraternizações, lançamentos de produtos e celebrações empresariais"
-    },
-    {
-      icon: Sparkles,
-      title: "Chá de Bebê",
-      description: "Decorações encantadoras para celebrar a chegada do seu bebê"
-    },
-    {
-      icon: Calendar,
-      title: "Formaturas",
-      description: "Festas memoráveis para celebrar conquistas acadêmicas"
-    },
-    {
-      icon: PartyPopper,
-      title: "Festas Temáticas",
-      description: "Qualquer tema que você imaginar, nós transformamos em realidade"
-    }
-  ];
+type PartyType = {
+  
+  title: string;
+  image?: string;
+  price?: string;
+  items?: string[];
+};
 
+const partyTypes: PartyType[] = [
+  {
+    
+    title: " Kit 1 – Econômico",
+    image: "/images/kits1.jpeg",
+    price: "R$ 150",
+    items: [
+      "Cilindros decorativos",
+      "Painel simples",
+      "Itens essenciais",
+      "Decoração prática e econômica"
+    ]
+  },
+  {
+   
+    title: "Kit 2 – Custo-Benefício",
+    image: "/images/kits2.jpeg",
+    price: "R$ 170",
+    items: [
+      "Cilindros decorativos",
+      "Painel temático",
+      "Elementos decorativos",
+      "Valorização do ambiente"
+    ]
+  },
+  {
+    
+    title: "Kit 3 – Médio",
+    image: "/images/kits3.jpeg",
+    price: "R$ 190",
+    items: [
+      "Painéis personalizados",
+      "Cilindros decorativos",
+      "Capas",
+      "Elementos especiais"
+    ]
+  },
+  {
+   
+    title: "Kit 4 Intermediário",
+    image: "/images/kits4.jpeg",
+    price: "R$ 250",
+    items: [
+      "Temas lúdicos",
+      "Cores vibrantes",
+      "Itens seguros para crianças"
+    ]
+  },
+  {
+   
+    title: "Kit 5 - Premium",
+    image: "/images/kits5.jpeg",
+    price: "R$ 300",
+    items: [
+      "Decoração delicada",
+      "Elementos elegantes"
+    ]
+  },
+  
+];
   const portfolio = [
     {
       image: "https://static.lumi.new/16/1667ff50fd6a95c7bf6613b96d0df9d6.png",
@@ -95,6 +130,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      <WhatsAppFloating />
       {/* Header/Navbar */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -195,26 +231,52 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-4">
-              Tipos de Festas que Organizamos
+              Kits de Festa Personalizados
             </h2>
             <p className="text-xl text-gray-600">
-              Especializados em criar experiências únicas para cada tipo de celebração
+              Escolha o tipo de festa que deseja e deixe o resto conosco
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {partyTypes.map((type, index) => {
-              const Icon = type.icon;
+             
               return (
-                <div 
-                  key={index}
-                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
-                >
-                  <div className="bg-gradient-to-br from-[#FF1B8D] to-[#FFB800] w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                    <Icon className="w-8 h-8 text-white" />
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 overflow-hidden">
+                <img
+                  src={type.image}
+                  alt={type.title}
+                  className="w-full h-400 object-cover "
+                />
+
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-[#1a1a2e] mb-2">
+                    {type.title}
+                  </h3>
+
+                  <p className="text-xl font-bold text-[#FF1B8D] mb-4">
+                    {type.price}
+                  </p>
+               
+                  <div className="flex items-center gap-2 mb-4">
+                   
+                    <span className="font-semibold text-[#1a1a2e]">Inclui:</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-[#1a1a2e] mb-3">{type.title}</h3>
-                  <p className="text-gray-600">{type.description}</p>
+                  
+                  
+                  <ul className="list-disc list-inside mt-4 mb-6 text-gray-600">
+                    {type.items?.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                  <a
+                    href={`https://wa.me/5584998302660?text=Olá! Gostaria de reservar o ${type.title}`}
+                    target="_blank"
+                    className="block text-center bg-[#25D366] text-white py-3 rounded-full font-semibold hover:opacity-90 transition"
+                  >
+                    Reservar no WhatsApp
+                  </a>
                 </div>
+              </div>
               );
             })}
           </div>
