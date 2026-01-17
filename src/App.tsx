@@ -5,10 +5,9 @@ import { WhatsAppFloating } from "./components/WhatsAppFloating";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", eventType: "", message: "" });
+  const [formData, setFormData] = useState({ name: "",  eventType: "", message: "" });
 
 type PartyType = {
-  
   title: string;
   image?: string;
   price?: string;
@@ -22,10 +21,12 @@ const partyTypes: PartyType[] = [
     image: "/images/kits1.jpeg",
     price: "R$ 150",
     items: [
-      "Cilindros decorativos",
-      "Painel simples",
-      "Itens essenciais",
-      "Decoração prática e econômica"
+      "Painel redondo",
+      "Trio de cilindros",
+      "Tapete",
+      "Capa painel redondo",
+      "Trio de capas cilindros",
+      "Bandejas e Jarro de flores"
     ]
   },
   {
@@ -34,10 +35,13 @@ const partyTypes: PartyType[] = [
     image: "/images/kits2.jpeg",
     price: "R$ 170",
     items: [
-      "Cilindros decorativos",
-      "Painel temático",
-      "Elementos decorativos",
-      "Valorização do ambiente"
+      "Painel redondo",
+      "Trio de cilindros",
+      "Tapete",
+      "Capa painel redondo",
+      "Trio  de capas cilindros",
+      "Escadinha",
+      "Bandejas e jarro de flores."
     ]
   },
   {
@@ -46,10 +50,16 @@ const partyTypes: PartyType[] = [
     image: "/images/kits3.jpeg",
     price: "R$ 190",
     items: [
-      "Painéis personalizados",
-      "Cilindros decorativos",
-      "Capas",
-      "Elementos especiais"
+      "Painel redondo",
+      "Painel romano",
+      "trio de cilindros",
+      "Tapete",
+      "Capa painel redondo",
+      "Capa painel romano",
+      "Trio de capas cilindros",
+      "Escadinha",
+      "Bandeja e Jarro de flores",
+      "Displays"
     ]
   },
   {
@@ -58,9 +68,17 @@ const partyTypes: PartyType[] = [
     image: "/images/kits4.jpeg",
     price: "R$ 250",
     items: [
-      "Temas lúdicos",
-      "Cores vibrantes",
-      "Itens seguros para crianças"
+      "Painel redondo",
+      "Painel romano",
+      "Trio de cilindros",
+      "Tapete",
+      "Capa painel redondo",
+      "Capa painel romano",
+      "Trio de capas cilindros",
+      "Escadinha",
+      "Banco (opcional)",
+      "Bandejas e jarro de flores",
+      "Displays",
     ]
   },
   {
@@ -69,27 +87,43 @@ const partyTypes: PartyType[] = [
     image: "/images/kits5.jpeg",
     price: "R$ 300",
     items: [
-      "Decoração delicada",
-      "Elementos elegantes"
+      "Painel redondo",
+      "Painel romano",
+      "Trio de cilindros",
+      "Tapete",
+      "Capa painel redondo",
+      "Capa painel romano",
+      "Trio de capas cilindros",
+      "Escadinha",
+      "Banco (opcional)",
+      "Mesa quadrada",
+      "Bandejas e jarro de flores",
+      "Displays",
     ]
   },
   
 ];
   const portfolio = [
     {
-      image: "https://static.lumi.new/16/1667ff50fd6a95c7bf6613b96d0df9d6.png",
-      title: "Aniversário Rosa & Dourado",
+      image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/613560532_17897922171367179_5571590672783020455_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzgwNzc3MTc3NjMwNzI5ODM4NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=xgIUnL5yDhUQ7kNvwG3h8uh&_nc_oc=AdlA1R9lCXUV7DAXSQiPNTF2ZYp4ECAXUgpukcREgTyK9ulZs02jzFN0sA5OcLMOyBg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=tbLU6sPGDxfopyMXQhip1Q&oh=00_AfqeK4RVops4oCrs-yrNCv3v1jV62bVIfNR8Eg82atZbZg&oe=6970AE92",
+      title: "Aniversário Tema Chapeuzinho Vermelho",
       category: "Aniversário"
     },
     {
-      image: "https://static.lumi.new/06/06f3fbc70e17cac8b561050efb916fa6.png",
-      title: "Casamento Elegante",
-      category: "Casamento"
+    type: "video",
+    src: "https://www.instagram.com/reel/DRIDlZljsKP/embed",
+    title: "Decoração Tema Cereja",
+    category: "Infantil"
+  },
+    {
+      image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/604527484_17896369515367179_61773805310505971_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzc5ODU5NjQwMDQ0MzQwOTU4MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzMjR4MTE3NS5zZHIuQzMifQ%3D%3D&_nc_ohc=iCGCfJHRj2AQ7kNvwEQDhbz&_nc_oc=AdnXz06zmktnzQwjcB3yvo3ASW4FVhyF1IswIXmrf1vw09TyrwF4gEvAcx16zklj7Zc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=blzAX-HS4t4QjYgxtPDv_w&oh=00_Afpny0oIpTdk5kySB9NDGphEyX8HqNDBP59n9tn-E6CdiA&oe=6970C472",
+      title: "",
+      category: ""
     },
     {
-      image: "https://static.lumi.new/c2/c2607dea1d054eca8d1a470726d7c961.png",
-      title: "Evento Corporativo",
-      category: "Corporativo"
+      image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.75761-15/487816842_17863442256367179_4038212684364990281_n.webp?_nc_cat=104&ig_cache_key=MzU5OTkzNDA5ODU2MDcyMzkwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQzOC5zZHIuQzMifQ%3D%3D&_nc_ohc=mvvTyb5Ym9QQ7kNvwGNCmi0&_nc_oc=Adn97PGbKWFAMJrRKo4o3rodH4ZEJvHOz15vuZ0CaoF8snCT9AfcmguyHwczzdCzN_8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=fJV2ApcQSt-ZmP8qOUWV_w&oh=00_AfriJI4B9KGB2xDkluZhFvC2b7gAAsplDX-meFLkVjqhtg&oe=6970B153",
+      title: "",
+      category: ""
     },
     {
       image: "https://static.lumi.new/8f/8f7ea00a70c2a181f2b7831df6d4504d.png",
@@ -100,24 +134,7 @@ const partyTypes: PartyType[] = [
       image: "https://static.lumi.new/40/400d64ec9d85f216fd18726c064164f1.png",
       title: "Chá de Bebê Delicado",
       category: "Chá de Bebê"
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Maria Silva",
-      text: "Organizaram o aniversário da minha filha e foi simplesmente perfeito! Cada detalhe foi pensado com carinho.",
-      rating: 5
-    },
-    {
-      name: "João Santos",
-      text: "Profissionais excelentes! Nosso casamento ficou lindo, exatamente como sonhamos.",
-      rating: 5
-    },
-    {
-      name: "Ana Costa",
-      text: "Super recomendo! Transformaram nosso evento corporativo em algo memorável.",
-      rating: 5
+      
     }
   ];
 
@@ -125,7 +142,7 @@ const partyTypes: PartyType[] = [
     e.preventDefault();
     // Aqui você pode adicionar a lógica de envio do formulário
     alert("Obrigado pelo contato! Retornaremos em breve.");
-    setFormData({ name: "", email: "", phone: "", eventType: "", message: "" });
+    setFormData({ name: "",  eventType: "", message: "" });
   };
 
   return (
@@ -141,11 +158,10 @@ const partyTypes: PartyType[] = [
             </div>
             
             {/* Desktop Menu */}
-            <div className="hidden md:flex gap-8">
+            <div className="hidden md:flex gap-8 dis">
               <a href="#home" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Início</a>
-              <a href="#portfolio" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Portfólio</a>
-              <a href="#services" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Serviços</a>
-              <a href="#testimonials" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Depoimentos</a>
+              <a href="#portfolio" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">trabalhos</a>
+              <a href="#services" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Kits de festa</a>
               <a href="#contact" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Contato</a>
             </div>
 
@@ -160,11 +176,10 @@ const partyTypes: PartyType[] = [
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 space-y-3">
+            <div className="md:hidden py-4 space-y-3 bg-centered border-t border-gray-200 text-center">
               <a href="#home" className="block text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Início</a>
-              <a href="#portfolio" className="block text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Portfólio</a>
-              <a href="#services" className="block text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Serviços</a>
-              <a href="#testimonials" className="block text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Depoimentos</a>
+              <a href="#portfolio" className="block text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Trabalhos</a>
+              <a href="#services" className="block text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Kits de festa</a>
               <a href="#contact" className="block text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Contato</a>
             </div>
           )}
@@ -199,20 +214,7 @@ const partyTypes: PartyType[] = [
                     Ver Portfólio
                   </a>
                 </div>
-                <div className="flex gap-6 pt-4">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-[#FF1B8D]">150+</div>
-                    <div className="text-sm text-gray-600">Festas Organizadas</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-[#FFB800]">98%</div>
-                    <div className="text-sm text-gray-600">Satisfação</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-[#FF1B8D]">5+</div>
-                    <div className="text-sm text-gray-600">Anos de Experiência</div>
-                  </div>
-                </div>
+               
               </div>
               <div className="relative">
                 <HeroCarousel />
@@ -237,49 +239,47 @@ const partyTypes: PartyType[] = [
               Escolha o tipo de festa que deseja e deixe o resto conosco
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {partyTypes.map((type, index) => {
-             
-              return (
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 overflow-hidden">
-                <img
-                  src={type.image}
-                  alt={type.title}
-                  className="w-full h-400 object-cover "
-                />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {partyTypes.map((type, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 overflow-hidden flex flex-col"
+            >
+              <img
+                src={type.image}
+                alt={type.title}
+                className="w-full h-400 object-cover"
+              />
 
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-[#1a1a2e] mb-2">
-                    {type.title}
-                  </h3>
+              <div className="p-6 flex flex-col h-full">
+                <h3 className="text-2xl font-bold text-[#1a1a2e] mb-2">
+                  {type.title}
+                </h3>
 
-                  <p className="text-xl font-bold text-[#FF1B8D] mb-4">
-                    {type.price}
-                  </p>
-               
-                  <div className="flex items-center gap-2 mb-4">
-                   
-                    <span className="font-semibold text-[#1a1a2e]">Inclui:</span>
-                  </div>
-                  
-                  
-                  <ul className="list-disc list-inside mt-4 mb-6 text-gray-600">
-                    {type.items?.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                  <a
-                    href={`https://wa.me/5584998302660?text=Olá! Gostaria de reservar o ${type.title}`}
-                    target="_blank"
-                    className="block text-center bg-[#25D366] text-white py-3 rounded-full font-semibold hover:opacity-90 transition"
-                  >
-                    Reservar no WhatsApp
-                  </a>
-                </div>
+                <p className="text-xl font-bold text-[#FF1B8D] mb-4">
+                  {type.price}
+                </p>
+
+                <span className="font-semibold text-[#1a1a2e] mb-2">Inclui:</span>
+
+                <ul className="list-disc list-inside text-gray-600 mb-6">
+                  {type.items?.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
+
+                {/* BOTÃO SEMPRE EMBAIXO */}
+                <a
+                  href={`https://wa.me/5584998302660?text=Olá! Gostaria de reservar o ${type.title}`}
+                  target="_blank"
+                  className="mt-auto block text-center bg-[#25D366] text-white py-3 rounded-full font-semibold hover:opacity-90 transition"
+                >
+                  Reservar no WhatsApp
+                </a>
               </div>
-              );
-            })}
-          </div>
+            </div>
+          ))}
+        </div>
         </div>
       </section>
 
@@ -288,10 +288,10 @@ const partyTypes: PartyType[] = [
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-4">
-              Nosso Portfólio
+              Nossos Trabalhos
             </h2>
             <p className="text-xl text-gray-600">
-              Algumas das festas que organizamos com amor e dedicação
+              Conheça alguns dos nossos trabalhos de festas personalizados  
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -300,47 +300,28 @@ const partyTypes: PartyType[] = [
                 key={index}
                 className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all"
               >
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                {item.type === "video" ? (
+                  <iframe
+                    src={item.src}
+                    title={item.title}
+                    className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                    frameBorder="0"
+                    allow="encrypted-media"
+                  />
+                ) : (
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                )}
+
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <div className="text-sm font-semibold mb-1">{item.category}</div>
                     <div className="text-xl font-bold">{item.title}</div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-gradient-to-b from-[#FFE5F1]/20 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-4">
-              O Que Nossos Clientes Dizem
-            </h2>
-            <p className="text-xl text-gray-600">
-              Depoimentos de quem confiou em nosso trabalho
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg"
-              >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-[#FFB800] text-xl">★</span>
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-6 italic">"{testimonial.text}"</p>
-                <div className="font-bold text-[#1a1a2e]">- {testimonial.name}</div>
               </div>
             ))}
           </div>
@@ -373,31 +354,9 @@ const partyTypes: PartyType[] = [
                     placeholder="Seu nome"
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-semibold text-[#1a1a2e] mb-2">Email</label>
-                  <input 
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF1B8D] focus:ring-2 focus:ring-[#FF1B8D]/20 outline-none transition-all"
-                    placeholder="seu@email.com"
-                  />
-                </div>
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold text-[#1a1a2e] mb-2">Telefone</label>
-                  <input 
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF1B8D] focus:ring-2 focus:ring-[#FF1B8D]/20 outline-none transition-all"
-                    placeholder="(00) 00000-0000"
-                  />
-                </div>
                 <div>
                   <label className="block text-sm font-semibold text-[#1a1a2e] mb-2">Tipo de Evento</label>
                   <select
@@ -407,11 +366,11 @@ const partyTypes: PartyType[] = [
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF1B8D] focus:ring-2 focus:ring-[#FF1B8D]/20 outline-none transition-all"
                   >
                     <option value="">Selecione...</option>
-                    <option value="aniversario">Aniversário</option>
-                    <option value="casamento">Casamento</option>
-                    <option value="corporativo">Evento Corporativo</option>
-                    <option value="cha-bebe">Chá de Bebê</option>
-                    <option value="formatura">Formatura</option>
+                    <option value="kit 1 - econômico">kit 1 - Econômico</option>
+                    <option value="Kit 2 - Custo-Benefício">Kit 2 - Custo-Benefício</option>
+                    <option value="Kit 3 - Médio">Kit 3 - Médio</option>
+                    <option value="kit 4 - Intermediário">kit 4 - Intermediário</option>
+                    <option value="kit 5 - Premium">Kit 5 - Premium</option>
                     <option value="outro">Outro</option>
                   </select>
                 </div>
@@ -440,22 +399,10 @@ const partyTypes: PartyType[] = [
             <div className="mt-8 pt-8 border-t border-gray-200">
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div className="flex flex-col items-center gap-2">
-                  <Phone className="w-6 h-6 text-[#FF1B8D]" />
-                  <div className="text-sm font-semibold text-[#1a1a2e]">Telefone</div>
-                  <div className="text-sm text-gray-600">(11) 99999-9999</div>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <Mail className="w-6 h-6 text-[#FF1B8D]" />
-                  <div className="text-sm font-semibold text-[#1a1a2e]">Email</div>
-                  <div className="text-sm text-gray-600">contato@partydreams.com</div>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="flex gap-3">
-                    <Instagram className="w-6 h-6 text-[#FF1B8D] hover:scale-110 transition-transform cursor-pointer" />
-                    <Facebook className="w-6 h-6 text-[#FF1B8D] hover:scale-110 transition-transform cursor-pointer" />
+                  <div className="flex gap-3 text-center items-center">
+                    <Instagram className="w-6 h-6 text-[#FF1B8D] hover:scale-110 transition-transform cursor-pointer" onClick={() => window.open("https://www.instagram.com/melissfest/", "_blank")} />
                   </div>
-                  <div className="text-sm font-semibold text-[#1a1a2e]">Redes Sociais</div>
-                  <div className="text-sm text-gray-600">@partydreams</div>
+                  <div className="text-sm font-semibold text-[#1a1a2e]">Rede Social</div>
                 </div>
               </div>
             </div>
@@ -469,14 +416,10 @@ const partyTypes: PartyType[] = [
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
               <PartyPopper className="w-8 h-8 text-[#FF1B8D]" />
-              <span className="text-2xl font-bold">Party Dreams</span>
+              <span className="text-2xl font-bold">Miliss Fest</span>
             </div>
-            <div className="text-center text-white/80">
-              © 2024 Party Dreams - Organização de Festas. Todos os direitos reservados.
-            </div>
-            <div className="flex gap-4">
-              <Instagram className="w-6 h-6 hover:text-[#FF1B8D] transition-colors cursor-pointer" />
-              <Facebook className="w-6 h-6 hover:text-[#FF1B8D] transition-colors cursor-pointer" />
+            <div className="text-center text-white/80 ">
+              © 2026 Desenvolvido por Iverton. Todos os direitos reservados.
             </div>
           </div>
         </div>
