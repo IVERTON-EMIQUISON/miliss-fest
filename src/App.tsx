@@ -317,7 +317,7 @@ const partyTypes: PartyType[] = [
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-[#1a1a2e] mb-4">Nossos Trabalhos</h2>
-            <p className="text-xl text-gray-600">Conheça alguns dos nossos trabalhos de festas personalizados  </p>
+            <p className="text-xl text-gray-600"> Conheça alguns dos nossos trabalhos em decorações de festas personalizadas </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolio.map((item, index) => (
