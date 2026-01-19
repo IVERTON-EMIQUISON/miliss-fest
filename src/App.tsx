@@ -131,6 +131,10 @@ const partyTypes: PartyType[] = [
      
     },
     {
+      type: "video",
+      src: "/images/video5.mp4",
+    },
+    {
       image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/583278125_17891573112367179_54907654660231497_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzc2Nzk1MTUwOTI2MzY1MjU2Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=eajy3KeLeGIQ7kNvwGcI9kn&_nc_oc=Adnvr0rPjE7s_PUsQ_Q08UNVPw_1RHg_mIidFPbvfxKEEOjQ2M2H3v3OJRedJwZPpio&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=blzAX-HS4t4QjYgxtPDv_w&oh=00_AfplaoCksWY6zjC7WDeheWBcFJ588Gbtm8zdXKMo_hYB1g&oe=6970BCE3",
       title: "",
     },
@@ -313,7 +317,7 @@ const partyTypes: PartyType[] = [
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-[#1a1a2e] mb-4">Nossos Trabalhos</h2>
-            <p className="text-xl text-gray-600">Clique nos vídeos para assistir em tela cheia</p>
+            <p className="text-xl text-gray-600">Conheça alguns dos nossos trabalhos de festas personalizados  </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolio.map((item, index) => (
