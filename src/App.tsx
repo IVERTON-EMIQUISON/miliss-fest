@@ -116,7 +116,6 @@ const partyTypes: PartyType[] = [
    },
     {
       image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/581463201_17891352963367179_5510458784088038129_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzc2NjQ2MjU3MDQ2ODEyNTMwMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTE1Mi5zZHIuQzMifQ%3D%3D&_nc_ohc=3XuPDXQcPTYQ7kNvwG6EApU&_nc_oc=AdlF5uQ7FNExGsS9xoGho0-ayE2-0-YCIqy_TY26MQHxlbFxCdFC070v1k7JJ-uaRAY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=blzAX-HS4t4QjYgxtPDv_w&oh=00_AfqWMHgNjMzdBhA66k6TLJNJNfYffKTNV7BjQOgqeohR_w&oe=6970CE47",
-      title: "Aniversário Tema Chapeuzinho Vermelho",
     },
     {
       type: "video",
@@ -157,13 +156,10 @@ const partyTypes: PartyType[] = [
     },
     {
       image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.75761-15/487816842_17863442256367179_4038212684364990281_n.webp?_nc_cat=104&ig_cache_key=MzU5OTkzNDA5ODU2MDcyMzkwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQzOC5zZHIuQzMifQ%3D%3D&_nc_ohc=mvvTyb5Ym9QQ7kNvwGNCmi0&_nc_oc=Adn97PGbKWFAMJrRKo4o3rodH4ZEJvHOz15vuZ0CaoF8snCT9AfcmguyHwczzdCzN_8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=fJV2ApcQSt-ZmP8qOUWV_w&oh=00_AfriJI4B9KGB2xDkluZhFvC2b7gAAsplDX-meFLkVjqhtg&oe=6970B153",
-      title: "",
-      category: ""
     },
     {
       image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.75761-15/479485929_17856903966367179_812923010137066063_n.webp?_nc_cat=105&ig_cache_key=MzU2NTk4OTA0NjU0NDE5NDg4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTA4NC5zZHIuQzMifQ%3D%3D&_nc_ohc=gSG5ylJBxx4Q7kNvwGhAdyK&_nc_oc=Adm_qfV965Zf6LP040kR09RoRrHgWRWVeKzFQC0okcInb44MHTDBxE4SpcrrGXciMpk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=fJV2ApcQSt-ZmP8qOUWV_w&oh=00_Afo_fFC29FYjwXR7tbGgBwfb3MPpIXCqq37E7SWHEit7sA&oe=6970AFE8",
-      title: "Festa Infantil Temática",
-      category: "Infantil"
+    
     },
   ];
 
