@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import {PartyPopper, Sparkles, Calendar, Users, Heart, Gift, Phone, Mail, Instagram, Facebook, Menu, X, Package, Boxes, Crown, Baby} from 'lucide-react';
+import {PartyPopper, Sparkles, Calendar, Users, Heart, Gift, Phone, Mail, Instagram, Facebook, Menu, X, Package, Boxes, Crown, Baby, Play} from 'lucide-react';
 import { HeroCarousel } from "./components/HeroCarousel";
 import { WhatsAppFloating } from "./components/WhatsAppFloating";
+import { iframe } from "framer-motion/client";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null); // Estado para o vídeo selecionado
   const [formData, setFormData] = useState({ name: "",  eventType: "", message: "" });
 
 type PartyType = {
@@ -106,19 +108,52 @@ const partyTypes: PartyType[] = [
   const portfolio = [
     {
       image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/613560532_17897922171367179_5571590672783020455_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzgwNzc3MTc3NjMwNzI5ODM4NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=xgIUnL5yDhUQ7kNvwG3h8uh&_nc_oc=AdlA1R9lCXUV7DAXSQiPNTF2ZYp4ECAXUgpukcREgTyK9ulZs02jzFN0sA5OcLMOyBg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=tbLU6sPGDxfopyMXQhip1Q&oh=00_AfqeK4RVops4oCrs-yrNCv3v1jV62bVIfNR8Eg82atZbZg&oe=6970AE92",
-      title: "Aniversário Tema Chapeuzinho Vermelho",
-      category: "Aniversário"
+     
     },
     {
-    type: "video",
-    src: "https://www.instagram.com/reel/DRIDlZljsKP/embed",
-    title: "Decoração Tema Cereja",
-    category: "Infantil"
-  },
+      type: "video",
+      src: "/images/video1.mp4",
+   },
+    {
+      image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/581463201_17891352963367179_5510458784088038129_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzc2NjQ2MjU3MDQ2ODEyNTMwMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTE1Mi5zZHIuQzMifQ%3D%3D&_nc_ohc=3XuPDXQcPTYQ7kNvwG6EApU&_nc_oc=AdlF5uQ7FNExGsS9xoGho0-ayE2-0-YCIqy_TY26MQHxlbFxCdFC070v1k7JJ-uaRAY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=blzAX-HS4t4QjYgxtPDv_w&oh=00_AfqWMHgNjMzdBhA66k6TLJNJNfYffKTNV7BjQOgqeohR_w&oe=6970CE47",
+      title: "Aniversário Tema Chapeuzinho Vermelho",
+    },
+    {
+      type: "video",
+      src: "/images/video4.mp4",
+    },
     {
       image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/604527484_17896369515367179_61773805310505971_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzc5ODU5NjQwMDQ0MzQwOTU4MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzMjR4MTE3NS5zZHIuQzMifQ%3D%3D&_nc_ohc=iCGCfJHRj2AQ7kNvwEQDhbz&_nc_oc=AdnXz06zmktnzQwjcB3yvo3ASW4FVhyF1IswIXmrf1vw09TyrwF4gEvAcx16zklj7Zc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=blzAX-HS4t4QjYgxtPDv_w&oh=00_Afpny0oIpTdk5kySB9NDGphEyX8HqNDBP59n9tn-E6CdiA&oe=6970C472",
       title: "",
       category: ""
+    },
+    {
+      image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/522120548_17877523458367179_1724113375873071029_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzY4MDQ0NjQxNjgwODMzNDYyMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTUwNS5zZHIuQzMifQ%3D%3D&_nc_ohc=P0LP28FoYHUQ7kNvwHiudiH&_nc_oc=Admjzl_P_SnaVkSOm-JX5cSiUKhhbH0MszcNwdV0t24cBdQu1T386rwqcopO27CAY3w&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=blzAX-HS4t4QjYgxtPDv_w&oh=00_AfoCLafM8FI0sfVbUUsLvoOI6IujtMSiPAH23hOKO_PNHw&oe=6970B265",
+     
+    },
+    {
+      image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/583278125_17891573112367179_54907654660231497_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzc2Nzk1MTUwOTI2MzY1MjU2Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQ0MC5zZHIuQzMifQ%3D%3D&_nc_ohc=eajy3KeLeGIQ7kNvwGcI9kn&_nc_oc=Adnvr0rPjE7s_PUsQ_Q08UNVPw_1RHg_mIidFPbvfxKEEOjQ2M2H3v3OJRedJwZPpio&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=blzAX-HS4t4QjYgxtPDv_w&oh=00_AfplaoCksWY6zjC7WDeheWBcFJ588Gbtm8zdXKMo_hYB1g&oe=6970BCE3",
+      title: "",
+    },
+    {
+      type: "video",
+      src: "/images/video.mp4",
+    },
+    {
+      image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.82787-15/518887703_17876795286367179_6114892522096242172_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzY3NjE0NzE1MDUwOTY3ODAyNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTYzOS5zZHIuQzMifQ%3D%3D&_nc_ohc=Vzcvh5TtDkoQ7kNvwG6jfpP&_nc_oc=AdlCFWrpj_AhHnNnW72tyPRSC0NL6jwTlZ6nJ-Do5fRpfvtOweNGyrmeAlBO4v8ssh8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=blzAX-HS4t4QjYgxtPDv_w&oh=00_AfoB9jXwg7_zacYBXg0tqXjItaX9hwCzDDRG3McYlZwRCw&oe=6970BD51",
+      title: "",
+    },
+    {     
+      type: "video",
+      src: "/images/video3.mp4",   
+    },
+    {
+      image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.75761-15/502549758_17874915687367179_5330774864422515107_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzY2NTE0NjI2NjU0NDMxMjA5NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTY5MC5zZHIuQzMifQ%3D%3D&_nc_ohc=QtaRU6CQpJoQ7kNvwE9FR0o&_nc_oc=AdnWhKLM39F75CjjNBC9El5-hHdwUTeVARfmagBi43NPs4hYZCWD4ATLDATMBY9Uvus&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=fJV2ApcQSt-ZmP8qOUWV_w&oh=00_AfqnnTR7AjrGgvwFC8jrbKeMmgVJp4N5RfG8KLl9tQ6I0w&oe=6970D67D",  
+      title: "",
+    },
+    {
+      type: "video",  
+      src: "/images/video2.mp4",
     },
     {
       image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.75761-15/487816842_17863442256367179_4038212684364990281_n.webp?_nc_cat=104&ig_cache_key=MzU5OTkzNDA5ODU2MDcyMzkwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTQzOC5zZHIuQzMifQ%3D%3D&_nc_ohc=mvvTyb5Ym9QQ7kNvwGNCmi0&_nc_oc=Adn97PGbKWFAMJrRKo4o3rodH4ZEJvHOz15vuZ0CaoF8snCT9AfcmguyHwczzdCzN_8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=fJV2ApcQSt-ZmP8qOUWV_w&oh=00_AfriJI4B9KGB2xDkluZhFvC2b7gAAsplDX-meFLkVjqhtg&oe=6970B153",
@@ -126,16 +161,10 @@ const partyTypes: PartyType[] = [
       category: ""
     },
     {
-      image: "https://static.lumi.new/8f/8f7ea00a70c2a181f2b7831df6d4504d.png",
+      image: "https://instagram.fmvf3-1.fna.fbcdn.net/v/t51.75761-15/479485929_17856903966367179_812923010137066063_n.webp?_nc_cat=105&ig_cache_key=MzU2NTk4OTA0NjU0NDE5NDg4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTA4NC5zZHIuQzMifQ%3D%3D&_nc_ohc=gSG5ylJBxx4Q7kNvwGhAdyK&_nc_oc=Adm_qfV965Zf6LP040kR09RoRrHgWRWVeKzFQC0okcInb44MHTDBxE4SpcrrGXciMpk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fmvf3-1.fna&_nc_gid=fJV2ApcQSt-ZmP8qOUWV_w&oh=00_Afo_fFC29FYjwXR7tbGgBwfb3MPpIXCqq37E7SWHEit7sA&oe=6970AFE8",
       title: "Festa Infantil Temática",
       category: "Infantil"
     },
-    {
-      image: "https://static.lumi.new/40/400d64ec9d85f216fd18726c064164f1.png",
-      title: "Chá de Bebê Delicado",
-      category: "Chá de Bebê"
-      
-    }
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -160,8 +189,8 @@ const partyTypes: PartyType[] = [
             {/* Desktop Menu */}
             <div className="hidden md:flex gap-8 dis">
               <a href="#home" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Início</a>
+              <a href="#services" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Kits de festa</a> 
               <a href="#portfolio" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">trabalhos</a>
-              <a href="#services" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Kits de festa</a>
               <a href="#contact" className="text-[#1a1a2e] hover:text-[#FF1B8D] transition-colors">Contato</a>
             </div>
 
@@ -211,7 +240,7 @@ const partyTypes: PartyType[] = [
                     href="#portfolio" 
                     className="bg-white text-[#FF1B8D] px-8 py-3 rounded-full font-semibold border-2 border-[#FF1B8D] hover:bg-[#FFE5F1] transition-all"
                   >
-                    Ver Portfólio
+                    Ver Trabalhos
                   </a>
                 </div>
                
@@ -287,47 +316,66 @@ const partyTypes: PartyType[] = [
       <section id="portfolio" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-4">
-              Nossos Trabalhos
-            </h2>
-            <p className="text-xl text-gray-600">
-              Conheça alguns dos nossos trabalhos de festas personalizados  
-            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1a1a2e] mb-4">Nossos Trabalhos</h2>
+            <p className="text-xl text-gray-600">Clique nos vídeos para assistir em tela cheia</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolio.map((item, index) => (
               <div 
                 key={index}
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all"
+                className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+                onClick={() => item.type === "video" && setSelectedVideo(item.src)}
               >
                 {item.type === "video" ? (
-                  <iframe
-                    src={item.src}
-                    title={item.title}
-                    className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-                    frameBorder="0"
-                    allow="encrypted-media"
-                  />
+                  <div className="relative w-full h-80">
+                   <video
+                      src={item.src}
+                      className="w-full h-full object-cover"
+                      muted
+                      loop
+                      playsInline
+                      onMouseEnter={(e) => e.currentTarget.play()}
+                      onMouseLeave={(e) => e.currentTarget.pause()}
+                    />
+
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                      <div className="bg-white/90 p-4 rounded-full shadow-xl transform group-hover:scale-110 transition-transform">
+                        <Play className="w-8 h-8 text-[#FF1B8D] fill-[#FF1B8D]" />
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <img 
-                    src={item.image} 
-                    alt={item.title}
-                    className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                  <img src={item.image} alt={item.title} className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500" />
                 )}
 
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <div className="text-sm font-semibold mb-1">{item.category}</div>
-                    <div className="text-xl font-bold">{item.title}</div>
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+                  <div className="text-sm font-semibold text-white/80 mb-1">{item.category}</div>
+                  <div className="text-xl font-bold text-white">{item.title}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-
+      {selectedVideo && (
+      <div className="fixed inset-0 z-[100]  bg-black/95 flex items-center justify-center">
+        
+        <button
+          onClick={() => setSelectedVideo(null)}
+           className="absolute top-4 right-4 z-10 text-white text-3xl"
+        >
+          ✕
+        </button>
+          <video
+            src={selectedVideo}
+            className="w-full h-full rounded-xl"
+            controls
+            autoPlay
+            playsInline
+          />
+       
+      </div>
+    )}
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-gradient-to-br from-[#FF1B8D] to-[#FFB800]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
