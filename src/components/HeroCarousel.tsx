@@ -8,6 +8,8 @@ const images = [
   "/images/festa5.jpeg",
   "/images/festa6.jpg",
   "/images/festa7.jpeg",
+  "/images/festa10.jpeg",
+  "/images/festa11.jpeg",
   "/images/festa8.png",
   "/images/festa9.jpeg",
 ];

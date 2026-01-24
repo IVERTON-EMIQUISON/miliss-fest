@@ -161,6 +161,12 @@ const partyTypes: PartyType[] = [
       src: "/images/video2.mp4",
     },
     {
+      image: "/images/festa100.jpeg",
+    },
+    {
+      image: "/images/festa11.jpeg",
+    },
+    {
       image: "/images/festa8.png",
     },
     {
